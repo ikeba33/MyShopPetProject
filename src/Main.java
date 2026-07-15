@@ -20,8 +20,9 @@ public class Main {
             IO.println("1. Посмотреть витрину");
             IO.println("2. Добавить товар в корзину");
             IO.println("3. Посмотреть корзину (и сумму)");
-            IO.println("4. Выйти");
+            IO.println("4. Оформить заказ");
             IO.println("5. очистить корзину");
+            IO.println("6. Выйти");
 
             // Считываем выбор пользователя
             String choise = IO.readln("Выберите действие (1-4): ");
@@ -62,12 +63,13 @@ public class Main {
                 case "3" -> {
                     myCart.printCartInfo();
                 }
-                case "4" -> {
-                    IO.println("Спасибо за визит! Всего доброго.");
-                    isRunning = false;
-                }
+                case "4" -> myCart.checkout();
                 case "5" -> {
                     myCart.clearCart();
+                }
+                case "6" -> {
+                    IO.println("Спасибо за визит! Всего доброго.");
+                    isRunning = false;
                 }
                 default -> IO.println("Неизвестная команда.");
             }
