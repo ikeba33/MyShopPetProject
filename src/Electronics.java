@@ -2,9 +2,8 @@ public class Electronics extends Product{
 
     private int warrantyMonths;
 
-    public Electronics(String name, int stock, double price,int warrantyMonths) {
-        super(name, stock, price);
-        this.warrantyMonths = warrantyMonths;
+    public Electronics(String name, double price, int quantity) {
+        super(name, price, quantity);
     }
 
     @Override
@@ -25,16 +24,6 @@ public class Electronics extends Product{
     @Override
     public void setPrice(double price) {
         super.setPrice(price);
-    }
-
-    @Override
-    public int getStock() {
-        return super.getStock();
-    }
-
-    @Override
-    public void setStock(int stock) {
-        super.setStock(stock);
     }
 
     @Override

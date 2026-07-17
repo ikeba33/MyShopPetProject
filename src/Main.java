@@ -1,11 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        Product[] myShopProducts = new Product[4];
-        myShopProducts[0] = new Food("Apples", 10, 1.5);
-        myShopProducts[1] = new Electronics("iphone 15", 10, 999.0, 24);
-        myShopProducts[2] = new Food("Pear", 5, 2.5);
-        myShopProducts[3] = new Electronics("Samsung s24", 7, 666.6, 48);
-
+        Product[] myShopProducts = {
+                new Electronics("iPhone 15", 999.00, 3),   // Всего 3 штуки на складе
+                new Food("Pear", 2.50, 50),                 // 50 штук на складе
+                new Food("Apples", 1.50, 100),              // 100 штук на складе
+                new Electronics("Samsung S24", 899.00, 2)   // Всего 2 штуки на складе
+        };
         // Создаем КОРЗИНУ для нашего покупателя
         Cart myCart = new Cart();
 
@@ -31,8 +31,9 @@ public class Main {
                 case "1" -> {
                     IO.println("\n--- ВИТРИНА ТОВАРОВ ---");
                     for (int i = 0; i < myShopProducts.length; i++) {
-                        IO.println((i + 1) + ". [" + myShopProducts[i].getCategory() + "] ");
-                        myShopProducts[i].printInfo();
+                        Product p = myShopProducts[i];
+                        System.out.printf("%d. %s — %.2f $ (В наличии: %d шт.)\n",
+                                (i + 1), p.getName(), p.getPrice(), p.getQuantity());
                     }
                 }
                 case "2" -> {
@@ -47,12 +48,14 @@ public class Main {
 
                             // Проверяем наличие на складе
                             // Внимание: так как stock у нас private, нам нужен геттер! (Добавим его ниже)
-                            if (selectedProduct.getStock() > 0) {
-                                // Уменьшаем остаток товара
-                                selectedProduct.setStock(selectedProduct.getStock() - 1);
+                            if (selectedProduct.getQuantity() > 0) {
                                 myCart.add(selectedProduct); // Кладем в корзину!
+                                // Уменьшаем остаток товара
+                                selectedProduct.setQuantity(selectedProduct.getQuantity() - 1);
+                                System.out.printf("Товар %s успешно добавлен в корзину! (Осталось на складе: %d)\n",
+                                        selectedProduct.getName(), selectedProduct.getQuantity());
                             } else {
-                                IO.println("Извините, этот товар закончился!");
+                                System.out.printf("Извините, товар %s закончился на складе!\n", selectedProduct.getName());
                             }
                         } else {
                             IO.println("Неверный номер товара!");
@@ -75,13 +78,4 @@ public class Main {
 
 
     }
-
-
-//        for (int i = 0; i < myShopProducts.length; i++) {
-//            System.out.println();
-//            System.out.println("Категория: " + myShopProducts[i].getCategory());
-//            myShopProducts[i].printInfo();
-//            System.out.println();
-//        }
-
 }

@@ -11,7 +11,6 @@ public class Cart {
     // Метод добавления товара в корзину
     public void add(Product product) {
         items.add(product); // ArrayList сам добавит элемент в конец и расширится
-        IO.println("Товар " + product.getName() + " добавлен в корзину!");
     }
 
     public void checkout() {

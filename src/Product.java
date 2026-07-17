@@ -1,13 +1,15 @@
 public abstract class Product implements Comparable<Product> {
     private String name;
-    private int stock;
     private double price;
+    private int quantity;
 
-    public Product(String name, int stock, double price) {
+    public Product(String name, double price, int quantity) {
         this.name = name;
-        this.stock = stock;
         this.price = price;
+        this.quantity = quantity;
     }
+
+
 
     public String getName() {
         return name;
@@ -25,24 +27,27 @@ public abstract class Product implements Comparable<Product> {
         this.price = price;
     }
 
-    public int getStock() {
-        return stock;
+
+
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void printInfo() {
-        if (stock == 0) {
+        if (quantity == 0) {
             IO.println("Товар: " + name + " | НЕТ В НАЛИЧИИ");
         } else {
-            IO.println("Товар: " + name + " | Цена: " + price + " | Остаток: " + stock + " шт.");
+            IO.println("Товар: " + name + " | Цена: " + price + " | Остаток: " + quantity + " шт.");
         }
     }
 
     public abstract String getCategory();
-    public int compareTo(Product other){
+
+    public int compareTo(Product other) {
         // Сравниваем цены двух товаров.
         // Double.compare возвращает:
         // отрицательное число, если наша цена меньше цены 'other'
