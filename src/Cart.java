@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
-import java.util.Random;
+import java.util.Collections;
 
 public class Cart {
     private final ArrayList<Product> items = new ArrayList<>();
@@ -100,5 +100,18 @@ public class Cart {
         items.clear();
         IO.println("Корзина полностью очищена!");
     }
+
+    public void sortProductByPrice() {
+        if (items.isEmpty()) {
+            System.out.println("Корзина пуста, сортировать нечего.");
+            return;
+        }
+        // Магия Java: Collections.sort автоматически использует метод compareTo,
+        // который мы только что написали в классе Product!
+        Collections.sort(items);
+        System.out.println("Товары в корзине успешно отсортированы по цене (по возрастанию)!");
+    }
 }
+
+
 

@@ -20,12 +20,13 @@ public class Main {
             IO.println("1. Посмотреть витрину");
             IO.println("2. Добавить товар в корзину");
             IO.println("3. Посмотреть корзину (и сумму)");
-            IO.println("4. Оформить заказ");
-            IO.println("5. очистить корзину");
-            IO.println("6. Выйти");
+            IO.println("4. Отсортировать товары в корзине по цене ");
+            IO.println("5. Оформить заказ");
+            IO.println("6. очистить корзину");
+            IO.println("7. Выйти");
 
             // Считываем выбор пользователя
-            String choise = IO.readln("Выберите действие (1-4): ");
+            String choise = IO.readln("Выберите действие (1-7): ");
             switch (choise) {
                 case "1" -> {
                     IO.println("\n--- ВИТРИНА ТОВАРОВ ---");
@@ -60,14 +61,11 @@ public class Main {
                         IO.println("Ошибка ввода! Пожалуйста, вводите только целые числа.");
                     }
                 }
-                case "3" -> {
-                    myCart.printCartInfo();
-                }
-                case "4" -> myCart.checkout();
-                case "5" -> {
-                    myCart.clearCart();
-                }
-                case "6" -> {
+                case "3" -> myCart.printCartInfo();
+                case "4" -> myCart.sortProductByPrice();
+                case "5" -> myCart.checkout();
+                case "6" -> myCart.clearCart();
+                case "7" -> {
                     IO.println("Спасибо за визит! Всего доброго.");
                     isRunning = false;
                 }

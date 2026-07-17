@@ -1,4 +1,4 @@
-public abstract class Product {
+public abstract class Product implements Comparable<Product> {
     private String name;
     private int stock;
     private double price;
@@ -42,6 +42,13 @@ public abstract class Product {
     }
 
     public abstract String getCategory();
-
+    public int compareTo(Product other){
+        // Сравниваем цены двух товаров.
+        // Double.compare возвращает:
+        // отрицательное число, если наша цена меньше цены 'other'
+        // положительное число, если наша цена больше
+        // 0, если цены равны
+        return Double.compare(this.getPrice(), other.getPrice());
+    }
 
 }
