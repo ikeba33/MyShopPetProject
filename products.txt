@@ -1,0 +1,4 @@
+Electronics;iPhone 15;999.00;1
+Food;Pear;2.50;50
+Food;Apples;1.50;100
+Electronics;Samsung S24;899.00;2
